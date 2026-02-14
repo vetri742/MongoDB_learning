@@ -1,0 +1,34 @@
+  //create database 
+use collegeDB;
+
+show collections;
+	// create collection
+db.createCollection("students");
+
+	// insert datas into the collection
+	
+db.students.insertMany([{"name":"virat","department":"MCA","age":22},
+						{"name":"vetri","department":"MCA","age":22},
+						{"name":"stokes","department":"B.TECH","age":21},
+						{"name":"root","department":"MBA","age":26},
+						{"name":"watson","department":"M.COM","age":23},
+						]);
+	// Read colletion
+
+db.students.find();
+
+db.students.find({age:{$gt:22}});
+
+	// to delete data
+
+db.students.deleteOne({"name":"root"});
+
+	// to update data
+
+db.students.updateOne(
+{"name":"watson"},
+{$set:{"age":27}});
+
+db.students.updateMany(
+{"age":{$gt:22}},
+{$set:{"status":"Senior"}});
